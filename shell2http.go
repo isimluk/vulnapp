@@ -66,11 +66,12 @@ const INDEXHTML = `<!DOCTYPE html>
     </style>
 </head>
 <body>
-	<h1>shell2http</h1>
+	<h1>Welcome to vulnerable.example.com</h1>
+
+        <p>This web application is vulnerable to remote code execution</p>
 	<ul>
 		%s
 	</ul>
-	Get from: <a href="https://github.com/msoap/shell2http">github.com/msoap/shell2http</a>
 </body>
 </html>
 `
