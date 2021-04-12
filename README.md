@@ -5,7 +5,7 @@ kubectl apply -f  https://raw.githubusercontent.com/isimluk/vulnapp/master/vulne
 
 Get web address:
 ```
-watch echo "http://$(kubectl get service vulnerable-example-com  -o yaml -o=jsonpath='{.status.loadBalancer.ingress[0].ip}')/"
+watch -n 1 echo 'http://$(kubectl get service vulnerable-example-com  -o yaml -o=jsonpath="{.status.loadBalancer.ingress[0].ip}")/'
 ```
 
 Tear down the app:
