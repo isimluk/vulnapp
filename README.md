@@ -1,3 +1,4 @@
+## Usage
 Deploy the app:
 ```
 kubectl apply -f  https://raw.githubusercontent.com/isimluk/vulnapp/master/vulnerable.example.yaml
@@ -12,3 +13,6 @@ Tear down the app:
 ```
 kubectl delete -f  https://raw.githubusercontent.com/isimluk/vulnapp/master/vulnerable.example.yaml
 ```
+
+## Appendix A
+The latest docker build: [![Docker Repository on Quay](https://quay.io/repository/slukasik/vulnapp/status "Docker Repository on Quay")](https://quay.io/repository/slukasik/vulnapp)
