@@ -12,8 +12,6 @@ sh -c echo CS_testcontainer starting
     /rootkit ./bin/Defense_Evasion_via_Rootkit.sh \
     /masquerading ./bin/Defense_Evasion_via_Masquerading.sh \
     /data_exfiltration ./bin/Exfiltration_via_Exfiltration_Over_Alternative_Protocol.sh \
-    /deploy_malware 'bash -x ./bin/Malware_Linux_Trojan_Local.sh' \
-    /deploy_malware2 'bash -x ./bin/Malware_Linux_Trojan_Remote.sh' \
     /reverse_shell ./bin/Command_Control_via_Remote_Access.sh \
     /reverse_shell-obfuscated ./bin/Command_Control_via_Remote_Access-obfuscated.sh \
     /credentials_dumping ./bin/Credential_Access_via_Credential_Dumping.sh \

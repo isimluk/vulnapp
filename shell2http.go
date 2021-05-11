@@ -68,7 +68,7 @@ const INDEXHTML = `<!DOCTYPE html>
 <body>
 	<h1>Welcome to vulnerable.example.com</h1>
 
-        <p>This web application is vulnerable to remote code execution</p>
+        <p>This is web application running on kubernetes cluster under Falcon Container Runtime Protection. You can run ps command bellow to see falcon-sensor container running within the same pod. Purpose of this demo application is to show-case various exploitation techniques and their detections by Falcon Platform.</p>
 	<ul>
 		%s
 	</ul>
