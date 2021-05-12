@@ -68,7 +68,10 @@ const INDEXHTML = `<!DOCTYPE html>
 <body>
 	<h1>Welcome to vulnerable.example.com</h1>
 
-        <p>This is web application running on kubernetes cluster under Falcon Container Runtime Protection. You can run ps command bellow to see falcon-sensor container running within the same pod. Purpose of this demo application is to show-case various exploitation techniques and their detections by Falcon Platform.</p>
+        <p>This web application runs on Kubernetes cluster under <a href="https://github.com/CrowdStrike/Cloud-AWS/tree/master/Container Security">Falcon Container Runtime Protection</a>.</p>
+        <p>This web application allows you to execute various exploitation techniques as if it was an attacker exploiting the application. Falcon Container sensor running inside the pod will then recognise this malicious behaviour and report it back to the Falcon Console.</p>
+
+        <p>You can view output of <a href="/ps">ps command</a> to see that falcon-sensor container running within the same pod as this application.</p>
 	<ul>
 		%s
 	</ul>
