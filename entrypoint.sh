@@ -7,7 +7,7 @@ cd /home/eval
 # Mark as CS testcontainer
 sh -c echo CS_testcontainer starting
 
-/shell2http -show-errors -include-stderr \
+exec /shell2http -show-errors -include-stderr \
     /ps "ps aux" \
     /rootkit ./bin/Defense_Evasion_via_Rootkit.sh \
     /masquerading ./bin/Defense_Evasion_via_Masquerading.sh \
