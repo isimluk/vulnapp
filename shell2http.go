@@ -267,6 +267,28 @@ func execShellCommand(appConfig Config, shell string, params []string, req *http
 	return shellOut, exitCode, err
 }
 
+var cmdDescriptions = map[string]string{
+	"./bin/Defense_Evasion_via_Rootkit.sh": "This script will change the group owner of /etc/ld.so.preload to 0, indicative of a Jynx Rootkit.",
+	"./bin/Defense_Evasion_via_Masquerading.sh": "Creates a copy of /usr/bin/whoami to whoami.rtf and executes it, causing a contradicting file extension.",
+	"./bin/Exfiltration_via_Exfiltration_Over_Alternative_Protocol.sh": "Attempts to exfiltrate data using DNS dig requests that contain system data in the hostname.",
+	"./bin/Command_Control_via_Remote_Access.sh": "Attempts to connect to a remote IP address and will exit at fork. Falcon Prevent will kill the attempt.",
+	"./bin/Command_Control_via_Remote_Access-obfuscated.sh": "Attempts to connect to a remote IP address and will exit at fork. Falcon Prevent will kill the attempt. (obfuscated version)",
+	"./bin/Credential_Access_via_Credential_Dumping.sh": "Runs mimipenguin and tries to dump passwords from inside the container environment.",
+	"./bin/Collection_via_Automated_Collection.sh": "Attempts to dump credentials from /etc/passwd to /tmp/passwords.",
+	"./bin/Execution_via_Command-Line_Interface.sh": "Emulate malicious activity related to suspicious CLI commands. Runs the command sh -c whoami '[S];pwd;echo [E]'.",
+	"./bin/Malware_Linux_Trojan_Local.sh": "Attempts to execute malware pre-loaded into the container. A Falcon Prevent policy will kill the process, if Falcon Prevent is enabled.",
+	"./bin/Malware_Linux_Trojan_Remote.sh": "Downloads malware from a remote target and attempts to execute it. A Falcon Prevent policy will kill the process, if Falcon Prevent is enabled.",
+}
+
+func describeCmd(cmd string) string {
+	desc, ok := cmdDescriptions[cmd]
+	if ok {
+		return desc
+	} else {
+		return html.EscapeString(cmd)
+	}
+}
+
 // setupHandlers - setup http handlers
 func setupHandlers(cmdHandlers []Command, appConfig Config, cacheTTL raphanus.DB) ([]Command, error) {
 	resultHandlers := []Command{}
@@ -290,7 +312,7 @@ func setupHandlers(cmdHandlers []Command, appConfig Config, cacheTTL raphanus.DB
 		if row.httpMethod != "" {
 			methodDesc = row.httpMethod + ": "
 		}
-		indexLiHTML += fmt.Sprintf(`<li><a href=".%s">%s%s</a> <span style="color: #888">- %s<span></li>`, path, methodDesc, path, html.EscapeString(cmd))
+		indexLiHTML += fmt.Sprintf(`<li><a href=".%s">%s%s</a> <span style="color: #888">- %s<span></li>`, path, methodDesc, path, describeCmd(cmd))
 		cmdsForLog[path] = append(cmdsForLog[path], cmd)
 
 		handler := mwMethodOnly(getShellHandler(appConfig, shell, params, cacheTTL), row.httpMethod)
